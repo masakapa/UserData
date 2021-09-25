@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string></string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>CodeBlock</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>- (void)checkUpdate {
+    MKNetworkEngine *netEngine = [[MKNetworkEngine alloc] init];
+    MKNetworkOperation *op = [netEngine operationWithURLString:APP_URL params:nil httpMethod:@"GET"];
+    [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
+        DLog(@"%@",completedOperation.responseJSON);
+        NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:completedOperation.responseData options:NSJSONReadingMutableContainers error:nil];
+        NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+        NSString *appstoreVersion = [[dict objectForKey:@"results"][0] objectForKey:@"version"];
+        
+        
+        //本地版本，如果本地版本低于appStore 版本，提示更新，并保存appStroe版本作为下次更新提示的本地版本。
+        NSString *currentVersion = [userDefault stringForKey:@"appstoreVersion"]?[userDefault stringForKey:@"appstoreVersion"]:[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+        
+        if ([appstoreVersion compare:currentVersion]==NSOrderedDescending) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"升级提示"
+                                                            message:@"有新版本，是否升级！"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"以后再说"
+                                                  otherButtonTitles:@"马上更新", nil];
+            alert.tag = 5230;
+            [userDefault setObject:appstoreVersion forKey:@"appstoreVersion"];
+            [alert show];
+        }
+        
+        NSString *trackName = [[dict objectForKey:@"results"][0] objectForKey:@"trackName"];
+        NSString *trackViewUrl = [[dict objectForKey:@"results"][0] objectForKey:@"trackViewUrl"];
+        [userDefault setObject:trackViewUrl forKey:@"trackViewUrl"];
+        [userDefault synchronize];
+        
+    } errorHandler:nil];
+    [netEngine enqueueOperation:op];
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>14547416-C1B4-4016-B635-95E2701B48BD</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetPlatformFamily</key>
+	<string>iphoneos</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>检查appStore 版本</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>OC-appVersionCheck</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

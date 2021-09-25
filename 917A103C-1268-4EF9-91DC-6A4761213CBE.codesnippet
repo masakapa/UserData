@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string></string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>CodeExpression</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>- (void)textFiledDidChange:(UITextField *)sender {
+    NSInteger lenth = 10;
+    NSString *toBeString = sender.text;
+    NSLog(@" 打印信息toBeString:%@",toBeString);
+    NSString *lang = [[sender textInputMode] primaryLanguage]; // 键盘输入模式
+    if ([lang isEqualToString:@"zh-Hans"]) { // 简体中文输入，包括简体拼音，健体五笔，简体手写
+        //判断markedTextRange是不是为Nil，如果为Nil的话就说明你现在没有未选中的字符，
+        //可以计算文字长度。否则此时计算出来的字符长度可能不正确
+        UITextRange *selectedRange = [sender markedTextRange];
+        //获取高亮部分(感觉输入中文的时候才有)
+        UITextPosition *position = [sender positionFromPosition:selectedRange.start offset:0];
+        // 没有高亮选择的字，则对已输入的文字进行字数统计和限制
+        if (!position) {
+            //中文和字符一起检测  中文是两个字符
+            if ([toBeString getStringLenthOfBytes] &gt; lenth) {
+                sender.text = [toBeString subBytesOfstringToIndex:lenth];
+            }
+        }
+    } else {
+        if ([toBeString getStringLenthOfBytes] &gt; lenth) {
+            sender.text = [toBeString subBytesOfstringToIndex:lenth];
+        }
+    }
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>917A103C-1268-4EF9-91DC-6A4761213CBE</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetPlatformFamily</key>
+	<string>iphoneos</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>OC-控制UITextfiled输入长度</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string></string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>CodeExpression</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>let group = DispatchGroup()
+        let queue = DispatchQueue(label: "info", qos: .default, attributes: .concurrent, autoreleaseFrequency: .inherit, target: nil)
+        group.enter()
+        queue.async {
+            JLNetworkingProvider.dispatch(JLPublicApi.saveApps(data: "apps"), originClass: BaseResponse.self) { (_, _) in
+                group.leave()
+            } failureHandler: { (_) in
+                group.leave()
+            }
+        }
+        
+        group.enter()
+        queue.async {
+            JLNetworkingProvider.dispatch(JLPublicApi.saveDeviceInfo(para: JLDeviceInfoPara()), originClass: BaseResponse.self) { (_, _) in
+                group.leave()
+            } failureHandler: { (_) in
+                group.leave()
+            }
+        }
+                
+        group.notify(queue: queue) {
+            DLog("请求完毕～～～～～～～～～～～～～")
+        }</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>5556C5A2-DDB3-4A37-97C1-8D93A5AF145C</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>Swift DispatchGroup notify</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

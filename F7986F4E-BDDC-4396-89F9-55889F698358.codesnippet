@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string></string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>CodeExpression</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>        let dict = ["button":button]
+        let vfl1 = "H:|[button]|"
+        let vfl2 = "V:|[button]|"
+        button.translatesAutoresizingMaskIntoConstraints=false
+        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(vfl1, options: NSLayoutFormatOptions.AlignAllTrailing, metrics: nil, views: dict))
+        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(vfl2, options: NSLayoutFormatOptions.AlignAllTop, metrics: nil, views: dict))
+        功能　　　　　　　　表达式
+        水平方向  　　　　　　  H:
+        垂直方向  　　　　　　  V:
+        Views　　　　　　　　 [view]
+        SuperView　　　　　　|
+        关系　　　　　　　　　&gt;=,==,&lt;=
+        空间,间隙　　　　　　　-
+        优先级　　　　　　　　@value</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>F7986F4E-BDDC-4396-89F9-55889F698358</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetPlatformFamily</key>
+	<string>iphoneos</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>Swift VFL</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

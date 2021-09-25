@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string></string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>CodeExpression</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>CGFloat tagLength = [NSString measureSinglelineStringWidth:reportModel.recordStatus andFont:[UIFont systemFontOfSize:11]]+12;
+    self.tagLabel.width = tagLength;
+    self.tagLabel.text = reportModel.recordStatus;
+    UIImage *image = [UIImage imageWithCaptureView:self.tagLabel];
+    //创建Image的富文本格式
+    NSTextAttachment *attach = [[NSTextAttachment alloc] init];
+    attach.bounds = CGRectMake(0, -3, tagLength, 20);//这个-2.5是为了调整下标签跟文字的位置
+    attach.image = image;
+    //添加到富文本对象里
+    NSAttributedString * imageStr = [NSAttributedString attributedStringWithAttachment:attach];
+    //创建  NSMutableAttributedString 富文本对象
+    NSMutableAttributedString *titleString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@" %@", reportModel.projectInfoName]];
+    [titleString insertAttributedString:imageStr atIndex:0];//加入文字前面
+    self.titleLabel.attributedText = titleString;</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>1304EF46-475A-4326-9E16-CCE87C0CBE44</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>OC-富文本标签</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

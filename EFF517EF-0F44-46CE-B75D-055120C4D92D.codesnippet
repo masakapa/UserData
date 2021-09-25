@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string></string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>ClassImplementation</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>/// 转码mp4
+    /// - Parameters:
+    ///   - sourceUrl:
+    ///   - complete:
+    func movFileTransformToMp4WithSourceUrl(sourceUrl: URL, complete: @escaping ((_ dataUrl : URL) -&gt; Void)) {
+        //以当前时间来为文件命名
+        let date = Date()
+        let formatter = DateFormatter.init()
+        formatter.dateFormat = "yyyyMMddHHmmss"
+        let fileName = formatter.string(from: date) + ".mp4"
+        
+        //保存址沙盒路径
+        let docPath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0] as NSString
+        let videoSandBoxPath = (docPath as String) + "/ablumVideo" + fileName
+        
+        print(videoSandBoxPath)
+        
+        //转码配置
+        let avAsset = AVURLAsset.init(url: sourceUrl, options: nil)
+        
+//        //取视频的时间并处理，用于上传
+//        let time = avAsset.duration
+//        let number = Float(CMTimeGetSeconds(time)) - Float(Int(CMTimeGetSeconds(time)))
+//        let totalSecond = number &gt; 0.5 ? Int(CMTimeGetSeconds(time)) + 1 : Int(CMTimeGetSeconds(time))
+//        let photoId = String(totalSecond)
+        
+        let exportSession = AVAssetExportSession.init(asset: avAsset, presetName: AVAssetExportPresetMediumQuality)
+        exportSession?.shouldOptimizeForNetworkUse = true
+        exportSession?.outputURL = URL.init(fileURLWithPath: videoSandBoxPath)
+        exportSession?.outputFileType = AVFileType.mp4 //控制转码的格式
+        exportSession?.exportAsynchronously(completionHandler: {
+            if exportSession?.status == AVAssetExportSession.Status.failed {
+                print("转码失败")
+            }
+            if exportSession?.status == AVAssetExportSession.Status.completed {
+                print("转码成功")
+                //转码成功后就可以通过dataurl获取视频的Data用于上传了
+                let dataurl = URL(fileURLWithPath: videoSandBoxPath)
+                complete(dataurl)
+                //上传视频的话是需要同时上传一张视频封面图片的，这里附带一个获取视频封面截图的方法，方法实现在下方
+//                let image = self.getVideoCropPicture(videoUrl: sourceUrl)
+            }
+        })
+    }
+    
+    /// 封面图
+    /// - Parameter videoUrl: &lt;#videoUrl description#&gt;
+    /// - Returns: &lt;#description#&gt;
+    func getVideoCropPicture(videoUrl: URL) -&gt; UIImage {
+        let avAsset = AVAsset(url: videoUrl)
+        let generator = AVAssetImageGenerator(asset: avAsset)
+        generator.appliesPreferredTrackTransform = true
+        let time = CMTimeMakeWithSeconds(0.0, preferredTimescale: 600)
+        var actualTime: CMTime = CMTimeMake(value: 0, timescale: 0)
+        let imageP = try? generator.copyCGImage(at: time, actualTime: &amp;actualTime)
+        let image = UIImage.init(cgImage: imageP!)
+        return image
+    }</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>EFF517EF-0F44-46CE-B75D-055120C4D92D</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>Swift transferMp4</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

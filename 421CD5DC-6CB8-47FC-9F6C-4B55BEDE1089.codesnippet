@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string></string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>CodeBlock</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>+(NSString *)getWeekday
+    {
+        NSDate *date = [NSDate date];
+        NSDateComponents *componets = [[NSCalendar autoupdatingCurrentCalendar] components:NSWeekdayCalendarUnit fromDate:date];
+        NSString *weekday = [self getWeekdayWithNumber:[componets weekday]];
+        return weekday;
+    }
+    
+    //1代表星期日、如此类推
+    +(NSString *)getWeekdayWithNumber:(int)number
+    {
+        switch (number) {
+            case 1:
+                return @"星期日";
+                break;
+            case 2:
+                return @"星期一";
+                break;
+            case 3:
+                return @"星期二";
+                break;
+            case 4:
+                return @"星期三";
+                break;
+            case 5:
+                return @"星期四";
+                break;
+            case 6:
+                return @"星期五";
+                break;
+            case 7:
+                return @"星期六";
+                break;
+            default:
+                return @"";
+                break;
+        }
+    }</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>421CD5DC-6CB8-47FC-9F6C-4B55BEDE1089</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>OC 计算某一天是星期几</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

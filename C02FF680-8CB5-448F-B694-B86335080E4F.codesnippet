@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string></string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>ClassImplementation</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>    func htmlAttributedString(fontSize:CGFloat, highlightSize:CGFloat, fontColor:String, highlightColor:String, lineSpacing:CGFloat) -&gt; NSMutableAttributedString {
+        let header = "&lt;html lang=\"zh-cn\"&gt;&lt;head&gt;&lt;meta charset=\"utf-8\"&gt;&lt;meta name=\"viewport\" content=\"width=device-width, nickName-scalable=no\"&gt;&lt;/meta&gt;&lt;style&gt;img{max-width: 100%; width:auto; height:auto;}body{text-align:justify;font-size:\(fontSize)pt;line-height: \(lineSpacing)pt;color:\(fontColor); !important;}em{font-size:\(highlightSize)pt;color:\(highlightColor);}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;"
+        let end = "&lt;/body&gt;&lt;/html&gt;"
+        let htmlStr = header + self + end
+        print("方法2---&gt;\(htmlStr)")
+        let attStr = try? NSMutableAttributedString.init(data: htmlStr.data(using: String.Encoding.utf8)!, options: [.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
+        return attStr ?? NSMutableAttributedString()
+    }</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>C02FF680-8CB5-448F-B694-B86335080E4F</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>Swift html转富文本</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

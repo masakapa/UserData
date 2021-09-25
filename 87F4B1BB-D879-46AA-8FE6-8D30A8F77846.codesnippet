@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string></string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>ClassImplementation</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>- (void)keyboardWillChangeFrameNotificationReceived:(NSNotification *)notification
+{
+    NSDictionary *userInfo = notification.userInfo;
+    CGRect containerViewFrame = self.containerView.frame;
+    CGRect keyboardBeginFrame = [userInfo[UIKeyboardFrameBeginUserInfoKey] CGRectValue];
+    containerViewFrame.size.height = CGRectGetHeight(self.view.bounds) - (CGRectGetHeight([UIScreen mainScreen].bounds) - CGRectGetMinY(keyboardBeginFrame));
+    self.containerView.frame = containerViewFrame;
+    CGRect keyboardEndFrame = [userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    NSTimeInterval animationDuration = [userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    containerViewFrame.size.height = CGRectGetHeight(self.view.bounds) - (CGRectGetHeight([UIScreen mainScreen].bounds) - CGRectGetMinY(keyboardEndFrame));
+    UIViewAnimationCurve animationCurve = [userInfo[UIKeyboardAnimationCurveUserInfoKey] integerValue];
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:animationDuration];
+    [UIView setAnimationCurve:animationCurve];
+    [UIView setAnimationBeginsFromCurrentState:NO];
+    self.containerView.frame = containerViewFrame;
+    [UIView commitAnimations];
+}
+</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>87F4B1BB-D879-46AA-8FE6-8D30A8F77846</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetPlatformFamily</key>
+	<string>iphoneos</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>OC-隐藏键盘</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

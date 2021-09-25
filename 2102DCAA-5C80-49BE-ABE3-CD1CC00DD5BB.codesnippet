@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string></string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>CodeBlock</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>extension UIApplication {
+    func topWindow() -&gt; UIWindow? {
+        if #available(iOS 13.0, *) {
+            for window in self.windows {
+                if window.isKeyWindow {
+                    return window
+                }
+            }
+            return self.windows.last
+        } else {
+            return self.keyWindow
+        }
+    }
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>2102DCAA-5C80-49BE-ABE3-CD1CC00DD5BB</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>Swift topcontroller</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

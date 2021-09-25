@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string></string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>ClassInterfaceVariables</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>static &lt;#InstanceClass#&gt; *&lt;#instance#&gt;;
++ (&lt;#InstanceClass#&gt; *)sharInstance {
+    @synchronized (self){
+        if (&lt;#instance#&gt; == nil) {
+            &lt;#instance#&gt; = [[&lt;#InstanceClass#&gt; alloc] init];
+        }
+    }
+    return &lt;#instance#&gt;;
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>6F336E63-3858-4FD0-AA21-061D6E943091</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetPlatformFamily</key>
+	<string>iphoneos</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>OC-@synchronized 单例</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

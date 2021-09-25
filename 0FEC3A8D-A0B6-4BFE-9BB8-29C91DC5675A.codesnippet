@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string></string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>countdownTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
+
+@objc private func updateTime() {
+        guard let _ = self.model else {
+            return
+        }
+        let currentDate = Date()
+        let calendar = Calendar.current
+        let diffDateComponents = calendar.dateComponents([.day, .hour, .minute, .second], from: currentDate, to: Date(timeIntervalSince1970: self.model.expiredTime))
+        let countdown = String(format: "%.2d:%.2d:%.2d", (diffDateComponents.hour ?? 0), (diffDateComponents.minute ?? 0), (diffDateComponents.second ?? 0))
+        self.countDownLabel.text = "签约倒计时：\(countdown)"
+    }</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>0FEC3A8D-A0B6-4BFE-9BB8-29C91DC5675A</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>Swift 倒计时显示</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

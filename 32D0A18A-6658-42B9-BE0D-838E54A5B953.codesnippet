@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string></string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>ClassImplementation</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>@implementation NSString (GBKLenth)
+
+- (NSUInteger)charactorNumber
+{
+    NSStringEncoding encoding = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
+    return [self charactorNumberWithEncoding:encoding];
+}
+
+- (NSUInteger)charactorNumberWithEncoding:(NSStringEncoding)encoding
+{
+    NSUInteger strLength = 0;
+    char *p = (char *)[self cStringUsingEncoding:encoding];
+    
+    NSUInteger lengthOfBytes = [self lengthOfBytesUsingEncoding:encoding];
+    for (int i = 0; i &lt; lengthOfBytes; i++) {
+        if (*p) {
+            p++;
+            strLength++;
+        }
+        else {
+            p++;
+        }
+    }
+    return strLength;
+}
+
+@end
+</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>32D0A18A-6658-42B9-BE0D-838E54A5B953</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>OC-NSString GBK Length</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

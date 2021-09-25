@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>bindVM</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>override func makeUI() {
+            super.makeUI()
+            
+        }
+        
+        override func bindViewModel() {
+            super.bindViewModel()
+            guard let viewModel = viewModel as? &lt;#ViewModel#&gt; else { return }
+            let input = &lt;#ViewModel#&gt;.Input()
+            let output = viewModel.transform(input: input)
+            
+            viewModel.loading.asObservable().bind(to: isLoading).disposed(by: rx.disposeBag)
+            
+            &lt;#//下拉刷新#&gt;
+            &lt;#viewModel.headerLoading.asObservable().bind(to: isHeaderLoading).disposed(by: rx.disposeBag)#&gt;
+            
+            &lt;#//上拉加载#&gt;
+            &lt;#viewModel.footerLoading.asObservable().bind(to: isFooterLoading).disposed(by: rx.disposeBag)#&gt;
+            
+            viewModel.parsedError.bind(to: error).disposed(by: rx.disposeBag)
+        }</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>477E2AC8-8270-49FD-9B0B-B537E5BB64D7</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>Swift VC BindVM</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

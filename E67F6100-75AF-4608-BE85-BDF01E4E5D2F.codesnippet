@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>lzcol</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>ClassImplementation</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>    lazy var collectioView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.minimumLineSpacing = 12
+        layout.minimumInteritemSpacing = 15
+        layout.scrollDirection = .vertical
+        layout.itemSize = CGSize(width: &lt;#width#&gt;, height: &lt;#height#&gt;)
+        layout.estimatedItemSize = CGSize(width: MAINSCREEN_WIDTH, height: 40)
+        layout.sectionInset = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
+        
+        let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collection.backgroundColor = .white
+        collection.delegate = self
+        collection.dataSource = self
+        collection.showsVerticalScrollIndicator = false
+        collection.showsHorizontalScrollIndicator = false
+        collection.register(nibWithCellClass: &lt;#class#&gt;.self)
+        collection.register(supplementaryViewOfKind: UICollectionView.&lt;#elementKindSectionHeader#&gt;, withClass: &lt;#class#&gt;.self)
+        return collection
+    }()</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>E67F6100-75AF-4608-BE85-BDF01E4E5D2F</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>Swift collectionView 初始化</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

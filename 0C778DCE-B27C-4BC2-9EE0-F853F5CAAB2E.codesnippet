@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string></string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>CodeBlock</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>NSString *name = userName; //self.myFaceModel.name;
+    NSString *text = [NSString stringWithFormat:@"%@ 光辉形象",name];
+    NSMutableAttributedString *textLabelStr =[[NSMutableAttributedString alloc] initWithString:text];
+    [textLabelStr setAttributes:@{NSForegroundColorAttributeName :[UIColor whiteColor],
+                                  NSFontAttributeName : [UIFont boldSystemFontOfSize:16]} range:NSMakeRange(0, name.length)];
+    [textLabelStr setAttributes:@{NSForegroundColorAttributeName :[UIColor whiteColor],
+                                  NSFontAttributeName : [UIFont systemFontOfSize:16]} range:NSMakeRange(name.length+1, 4)];</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>0C778DCE-B27C-4BC2-9EE0-F853F5CAAB2E</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetPlatformFamily</key>
+	<string>iphoneos</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>OC-AtrributedString</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

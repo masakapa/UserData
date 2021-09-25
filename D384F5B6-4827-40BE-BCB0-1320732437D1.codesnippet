@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string></string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>ClassImplementation</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>func getFirstLetterFromString(aString: String?) -&gt; (String) {
+        guard let str = aString else {
+            return "#"
+        }
+        // 注意,这里一定要转换成可变字符串
+        let mutableString = NSMutableString.init(string: str)
+        // 将中文转换成带声调的拼音
+        CFStringTransform(mutableString as CFMutableString, nil, kCFStringTransformToLatin, false)
+        // 去掉声调(用此方法大大提高遍历的速度)
+        let pinyinString = mutableString.folding(options: String.CompareOptions.diacriticInsensitive, locale: NSLocale.current)
+        // 将拼音首字母装换成大写
+        let strPinYin = polyphoneStringHandle(nameString: str, pinyinString: pinyinString).uppercased()
+        // 截取大写首字母
+        let firstString = strPinYin.substring(to: strPinYin.index(strPinYin.startIndex, offsetBy:1))
+        // 判断姓名首位是否为大写字母
+        let regexA = "^[A-Z]$"
+        let predA = NSPredicate.init(format: "SELF MATCHES %@", regexA)
+        return predA.evaluate(with: firstString) ? firstString : "#"
+    }
+    
+    
+    /// 多音字处理
+    func polyphoneStringHandle(nameString:String, pinyinString:String) -&gt; String {
+        if nameString.hasPrefix("长") {return "chang"}
+        if nameString.hasPrefix("沈") {return "shen"}
+        if nameString.hasPrefix("厦") {return "xia"}
+        if nameString.hasPrefix("地") {return "di"}
+        if nameString.hasPrefix("重") {return "chong"}
+        return pinyinString;
+    }</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>D384F5B6-4827-40BE-BCB0-1320732437D1</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>Swift 中文转拼音</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

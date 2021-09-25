@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string></string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>CodeBlock</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>NSMutableArray * childViewControllers = [NSMutableArray arrayWithObjects:child_1, child_2, child_3, child_4, child_5, child_6, child_7, child_8, nil];
+    NSUInteger count = [childViewControllers count];
+    for (NSUInteger i = 0; i &lt; count; ++i) {
+        // Select a random element between i and end of array to swap with.
+        NSUInteger nElements = count - i;
+        NSUInteger n = (arc4random() % nElements) + i;
+        [childViewControllers exchangeObjectAtIndex:i withObjectAtIndex:n];
+    }
+    NSUInteger nItems = 1 + (rand() % 8);
+    return [childViewControllers subarrayWithRange:NSMakeRange(0, nItems)];</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>BBE39847-9D55-473B-8D9D-9A9DF7BED0AA</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>OC-随机数组</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

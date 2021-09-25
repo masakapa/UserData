@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string></string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>CodeExpression</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>//    排序
+//    数字排序
+    NSArray *array = [[NSMutableArray alloc] initWithObjects:@"4", @"1", @"10", @"2", nil];
+    array = [[NSMutableArray alloc] initWithArray:[array sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        return [obj1 compare:obj2 options:NSNumericSearch];
+    }]];
+    NSLog(@"%@",array);
+//    升序   字母
+    array=@[@"b",@"ui",@"ua",@"uc",@"t",@"f"];
+    array = [[NSMutableArray alloc] initWithArray:[array sortedArrayUsingSelector:@selector(compare:)]];
+    NSLog(@"%@",array);
+    
+    // 字典排序
+    NSDictionary *dict=@{@"tr": @"1",@"At": @"2",@"ner": @"3",@"nac": @"4",@"nab": @"5",@"D": @"6"};
+    array = [[NSMutableArray alloc]initWithArray:[dict allKeys]];
+    //升序排序
+    array = [[NSMutableArray alloc]initWithArray:[array sortedArrayUsingSelector:@selector(compare:)]];
+    NSLog(@"%@",array);
+    array = [[NSMutableArray alloc]initWithArray:[array sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        return [obj1 compare:obj2 options:NSNumericSearch] == NSOrderedDescending;
+    }]];</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>3F607753-4B31-4022-B927-9588DF479328</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>OC-数组/字典排序</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

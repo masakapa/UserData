@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string></string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>CodeBlock</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>NSDateFormatter * dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyyMMddHHmmss"];
+    NSDate* toDate     = [dateFormatter dateFromString:@"19700608142033"];
+    NSDate*  startDate    = [ [ NSDate alloc] init ];
+    NSCalendar* chineseClendar = [ [ NSCalendar alloc ] initWithCalendarIdentifier:NSGregorianCalendar ];
+    NSUInteger unitFlags = NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit | NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit;
+    
+    NSDateComponents *cps = [ chineseClendar components:unitFlags fromDate:startDate  toDate:toDate  options:0];
+    
+    NSInteger diffYear = [cps year];
+    NSInteger diffMon = [cps month];
+    NSInteger diffDay = [cps day];
+    NSInteger diffHour = [cps hour];
+    NSInteger diffMin = [cps minute];
+    NSInteger diffSec = [cps second];
+    
+    NSLog(@" From Now to %@, diff: Years: %d  Months: %d, Days; %d, Hours: %d, Mins:%d, sec:%d", [toDate description], diffYear, diffMon, diffDay, diffHour, diffMin,diffSec );</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>66FC2F73-D80C-46DE-9D08-7A2D5E7B5DB7</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetPlatformFamily</key>
+	<string>iphoneos</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>OC-两个时间点之间相差的时间</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

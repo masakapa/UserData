@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>lztab</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>ClassImplementation</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>lazy var table: UITableView = {
+    var view = UITableView(frame: .zero, style: .plain)
+    view.delegate = self
+    view.dataSource = self
+    view.showsVerticalScrollIndicator = true
+    view.rowHeight = UITableView.automaticDimension
+    view.estimatedRowHeight = 45
+    view.separatorStyle = .none
+    view.backgroundColor = .white
+    view.register(nibWithCellClass: &lt;#T#&gt;.self)
+    view.register(headerFooterViewClassWith: &lt;#UITableViewHeaderFooterView#&gt;.self)
+    return view
+}()</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>1EC9448E-8440-4605-A7BE-F7C768CDBEC5</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetPlatformFamily</key>
+	<string>iphoneos</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>Swift tableView初始化</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

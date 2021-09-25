@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string></string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>ClassImplementation</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    NSLog(@"%@",NSStringFromRange(range));
+    if (range.length==1) {
+        [self searchKey:[textField.text stringByReplacingCharactersInRange:range withString:string]];
+    }else{
+        [self searchKey:[textField.text stringByReplacingCharactersInRange:range withString:string]];
+    }
+    return YES;
+}
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [textField resignFirstResponder];
+    return YES;
+}
+- (BOOL)textFieldShouldClear:(UITextField *)textField
+{
+    [self searchKey:nil];
+    return YES;
+}
+- (void)searchKey:(NSString*)key
+{
+    if (key.length) {
+    }else{
+        
+    }
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>136460F5-CF46-4022-B613-FAC01BE42C1F</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>OC textfield search</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

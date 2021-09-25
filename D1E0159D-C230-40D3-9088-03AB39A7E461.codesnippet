@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string></string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>CodeBlock</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string> typealias AuthorizeCompletClosure = () -&gt; Void
+    
+    // MARK: - 相机
+    
+    func camerAuthorizeCheck(completeClosure: AuthorizeCompletClosure?) {
+        let authStatus = AVCaptureDevice.authorizationStatus(for: .video)
+        if (authStatus == AVAuthorizationStatus.restricted || authStatus == AVAuthorizationStatus.denied) {
+//            self.showAlert(title: "无法使用相机", message: "请在iPhone的\"设置-隐私-相机\"中允许访问相机", buttonTitles: ["取消", "设置"], highlightedButtonIndex: 10) { index in
+//                if index == 1 {
+//                    UIApplication.shared.openURL(URL(string: UIApplication.openSettingsURLString)!)
+//                }
+//            }
+        } else if (authStatus == AVAuthorizationStatus.notDetermined) {
+            // fix issue 466, 防止用户首次拍照拒绝授权时相机页黑屏
+            AVCaptureDevice.requestAccess(for: AVMediaType.video) { granted in
+                if (granted) {
+                    DispatchQueue.main.async {
+                        completeClosure?()
+                    }
+                }
+            }
+        } else {
+            let sourceType = UIImagePickerController.SourceType.camera;
+            guard UIImagePickerController.isSourceTypeAvailable(sourceType) else {
+                // 相机不可用
+                return
+            }
+            
+        }
+    }
+    
+    // MARK: - 相册
+    
+    func photoAuthorizeCheck(completeClosure: AuthorizeCompletClosure?) {
+        if PHPhotoLibrary.authorizationStatus() == .denied {
+            // 已被拒绝，没有相册权限，将无法保存拍的照片
+//                        self.showAlertSheet(title: "无法访问相册", message: "请在iPhone的\"设置-隐私-相册\"中允许访问相册", buttonTitles: ["取消", "设置"], highlightedButtonIndex: 10) { index in
+//                            if index == 1 {
+//                                UIApplication.shared.openURL(URL(string: UIApplication.openSettingsURLString)!)
+//                            }
+//                        }
+        } else if PHPhotoLibrary.authorizationStatus() == .notDetermined {
+            // 未请求过相册权限
+            PHPhotoLibrary.requestAuthorization { (authorizationStatus) in
+                self.photoAuthorizeCheck(completeClosure: completeClosure)
+            }
+        } else {
+            completeClosure?()
+        }
+    }</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>D1E0159D-C230-40D3-9088-03AB39A7E461</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetPlatformFamily</key>
+	<string>iphoneos</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>Swift 获取相机相册权限</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

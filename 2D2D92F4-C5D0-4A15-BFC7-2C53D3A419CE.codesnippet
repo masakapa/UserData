@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string></string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>TopLevel</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>// .h 文件
+typedef NSString MIRedPacketStatus;
+
+extern MIRedPacketStatus * const RED_PACKET_STATUS_UNKNOW;//未知状态
+extern MIRedPacketStatus * const RED_PACKET_STATUS_SENT;//初始化状态，等待打开
+extern MIRedPacketStatus * const RED_PACKET_STATUS_OPEND; //已打开
+extern MIRedPacketStatus * const RED_PACKET_STATUS_EXPIRED; //已过期
+
+// .m 文件
+
+MIRedPacketStatus * const RED_PACKET_STATUS_UNKNOW = @"Unknown";
+MIRedPacketStatus * const RED_PACKET_STATUS_SENT = @"Sent";
+MIRedPacketStatus * const RED_PACKET_STATUS_OPEND = @"Opened";
+MIRedPacketStatus * const RED_PACKET_STATUS_EXPIRED = @"Expired";</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>2D2D92F4-C5D0-4A15-BFC7-2C53D3A419CE</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C-Plus-Plus</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>OC-字符串类型 使用</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

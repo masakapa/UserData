@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string></string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>CodeExpression</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>#import &lt;Photos/PHPhotoLibrary.h&gt;
+
+- (void)photoAuthorizationCheck: (void(^)(void))complete {
+    PHAuthorizationStatus status = [PHPhotoLibrary authorizationStatus];
+    if (status == PHAuthorizationStatusNotDetermined) {
+        [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self photoAuthorizationCheck:complete];
+            });
+        }];
+    } else if (status == PHAuthorizationStatusRestricted || status == PHAuthorizationStatusDenied) {
+        // 无权限
+        //        UIAlertView * alart = [[UIAlertView alloc]initWithTitle:@"温馨提示" message:@"请您设置允许APP访问您的相册\n设置&gt;隐私&gt;照片" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        //        [alart show];
+        //        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+    } else {
+        !complete ?: complete();
+    }
+}
+
+#import &lt;AVFoundation/AVCaptureDevice.h&gt;
+#import &lt;AVFoundation/AVMediaFormat.h&gt;
+
+
+- (void)cameraAuthorizationCheck:(void(^)(void))complete  {
+    AVAuthorizationStatus status = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+    if (status == AVAuthorizationStatusNotDetermined) {
+        [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
+            if (granted) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self cameraAuthorizationCheck:complete];
+                });
+            }
+        }];
+    } else if (status == AVAuthorizationStatusRestricted || status == AVAuthorizationStatusDenied) {
+        // 无权限
+        //        Alert(@"请在iPhone的“设置-隐私-相机”选项中，允许微信访问您的相机。", nil);
+        //        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+    } else {
+        if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+            //            Alert(@"相机不可用", nil);
+            return;
+        }
+        !complete ?: complete();
+    }
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>73B167D4-808B-4319-98A7-27521F0B6B54</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetPlatformFamily</key>
+	<string>iphoneos</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>OC-相册相机权限</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

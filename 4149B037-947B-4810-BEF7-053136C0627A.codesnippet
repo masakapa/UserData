@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string></string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string> func versionCheck(){
+        let infoDictionary = Bundle.main.infoDictionary
+        let appDisplayName = infoDictionary?["CFBundleDisplayName"] //程序名称
+        let majorVersion = infoDictionary?["CFBundleShortVersionString"]//主程序版本号
+        let minorVersion = infoDictionary?["CFBundleVersion"]//版本号（内部标示）
+        //设备信息
+        let iosVersion : String = UIDevice.current.systemVersion as String //ios版本
+        let identifierNumber = UIDevice.current.identifierForVendor //设备udid
+        let systemName = UIDevice.current.systemName //设备名称
+        let model = UIDevice.current.model //设备型号
+        let localizedModel = UIDevice.current.localizedModel //设备区域化型号如A1533
+        
+        let appVersion = majorVersion as! String
+    }</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>4149B037-947B-4810-BEF7-053136C0627A</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetPlatformFamily</key>
+	<string>iphoneos</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>Swift 获取版本信息</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

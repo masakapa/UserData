@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string></string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>CodeBlock</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>- (UIView*)scrollLable:(NSString*)text
+{
+    UIView *nV=[[UIView alloc]initWithFrame:CGRectMake(60, 100, 200, 44)];
+    if (text.length) {
+        nV.backgroundColor=[UIColor clearColor];
+        nV.clipsToBounds=YES;
+        nV.tag=102;
+        
+        CAGradientLayer* gradientMask = [CAGradientLayer layer];
+        gradientMask.bounds = nV.layer.bounds;
+        gradientMask.position = CGPointMake([nV bounds].size.width / 2, [nV bounds].size.height / 2);
+        NSObject *transparent = (NSObject*) [[UIColor clearColor] CGColor];
+        NSObject *opaque = (NSObject*) [[UIColor blackColor] CGColor];
+        gradientMask.startPoint = CGPointMake(0.0, CGRectGetMidY(nV.frame));
+        gradientMask.endPoint = CGPointMake(1.0, CGRectGetMidY(nV.frame));
+        float fadePoint = (float)10/nV.frame.size.width;
+        [gradientMask setColors: [NSArray arrayWithObjects: transparent, opaque, opaque, transparent, nil]];
+        [gradientMask setLocations: [NSArray arrayWithObjects:
+                                     [NSNumber numberWithFloat: 0.0],
+                                     [NSNumber numberWithFloat: fadePoint],
+                                     [NSNumber numberWithFloat: 1 - fadePoint],
+                                     [NSNumber numberWithFloat: 1.0],
+                                     nil]];
+//        nV.layer.mask = gradientMask;
+        
+        
+        
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 180, 44)];
+        label.backgroundColor = [UIColor clearColor];
+        label.font = [UIFont systemFontOfSize:18];
+        label.textColor  = [UIColor blackColor];
+        label.shadowOffset = CGSizeMake(0, 0);
+        label.text = text;
+        label.tag = 101;
+        label.textAlignment = NSTextAlignmentCenter;
+        [nV addSubview:label];
+    }
+    
+    UILabel *label = (UILabel*)[nV viewWithTag:101];
+    label.text = text;
+    CGRect frame=label.frame;
+    CGSize size = [label sizeThatFits:CGSizeMake(MAXFLOAT, 20)];
+    if (frame.size.width&lt;size.width) {
+        frame.size.width=size.width;
+        label.frame=frame;
+        frame.origin.x=-frame.size.width;
+        
+        [UIView animateWithDuration:10.8 delay:1.0 options:UIViewAnimationOptionCurveLinear animations:^{
+            label.frame = frame;
+        } completion:^(BOOL finished) {
+            [self EntertainingDiversionsAnimation:10.8 aView:label subView:nV];
+        }];
+    }
+    
+    return nV;
+}
+-(void)EntertainingDiversionsAnimation:(NSTimeInterval)interval aView:(UIView *)av subView:(UIView *)sv{
+    CGRect frame =av.frame;
+    frame.origin.x=sv.frame.size.width;
+    av.frame=frame;
+    frame.origin.x=-frame.size.width;
+    [UIView animateWithDuration:interval
+                          delay:0.0
+                        options:UIViewAnimationOptionRepeat|UIViewAnimationOptionCurveLinear
+                     animations:^{
+                         av.frame = frame;
+                     }
+                     completion:^(BOOL finished) {
+                         
+                     }];
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>CF8DCF57-C3C8-4D8E-BC35-AE6204C4CD92</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetPlatformFamily</key>
+	<string>iphoneos</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>OC-添加一个滚动的lable</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

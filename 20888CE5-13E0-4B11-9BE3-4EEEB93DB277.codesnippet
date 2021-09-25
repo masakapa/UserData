@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string></string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>CodeExpression</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>#ifndef UtilsMacro_h
+#define UtilsMacro_h
+
+
+
+#define W(obj)   (!obj?0:(obj).frame.size.width)
+#define H(obj)   (!obj?0:(obj).frame.size.height)
+#define X(obj)   (!obj?0:(obj).frame.origin.x)
+#define Y(obj)   (!obj?0:(obj).frame.origin.y)
+#define XW(obj) (X(obj)+W(obj))
+#define YH(obj) (Y(obj)+H(obj))
+#define BoldFont(x) [UIFont boldSystemFontOfSize:x]
+#define Font(x) [UIFont systemFontOfSize:x]
+#define SystemSizeFont Font([UIFont systemFontSize])
+//方正黑体简体字体定义
+#define Font_FZHTJW(F) [UIFont fontWithName:@"FZHTJW--GB1-0" size:F]
+
+#define CGRectMakeXY(x,y,size) CGRectMake(x,y,size.width,size.height)
+
+/* 字符 整型 浮点转number */
+#define S2N(x) [NSNumber numberWithInt:[x intValue]]
+#define I2N(x) [NSNumber numberWithInt:x]
+#define F2N(x) [NSNumber numberWithFloat:x]
+
+#define NSStringFromInt(intValue) [NSString stringWithFormat:@"%d",intValue]
+#define NSNumberFromString(value) [NSNumber numberWithInt:[x intValue]]
+#define NSNumberFromInt(value) [NSNumber numberWithInt:x]
+#define NSNumberFromFloat(value) [NSNumber numberWithFloat:x]
+
+
+//NSUserDefaults 实例化
+#define USER_DEFAULT [NSUserDefaults standardUserDefaults]
+
+
+/* 透明度为a 的rgb 颜色 */
+#define RGBA(r,g,b,a) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:(a)]
+#define RGB(r,g,b) RGBA(r,g,b,1)
+// rgb颜色转换（16进制-&gt;10进制）
+#define RGBHex(rgbValue) [UIColor colorWithRed:((float)((rgbValue &amp; 0xFF0000) &gt;&gt; 16))/255.0 green:((float)((rgbValue &amp; 0xFF00) &gt;&gt; 8))/255.0 blue:((float)(rgbValue &amp; 0xFF))/255.0 alpha:1.0]
+
+//由角度获取弧度
+#define degreesToRadian(x) (M_PI * (x) / 180.0)
+//由弧度获取角度
+#define radianToDegrees(radian) (radian*180.0)/(M_PI)
+
+/* 应用版本号 */
+#define APP_VERSION [[[NSBundle mainBundle] infoDictionary]objectForKey:@"CFBundleShortVersionString"]
+
+/*系统版本号*/
+#define SYS_VERSION [[[UIDevice currentDevice] systemVersion] floatValue]
+
+#define SYSTEM_VERSION_GREATER_THAN(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending)
+#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+#define SYSTEM_VERSION_LESS_THAN(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+#define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
+
+/*屏幕大小*/
+#define MAIN_SCREEN_FRAME [[UIScreen mainScreen]  bounds]
+#define MAIN_SCREEN_WIDTH [[UIScreen mainScreen]  bounds].size.width
+#define MAIN_SCREEN_HEIGHT [[UIScreen mainScreen] bounds].size.height
+
+//获取当前语言
+#define CurrentLanguage ([[NSLocale preferredLanguages] objectAtIndex:0])
+
+#define CN                 1
+#define UI_language(cn,us) CN?cn:us
+
+#ifdef DEBUG
+#   define DLog(fmt, ...) {NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);}
+#   define ELog(err) {if(err) DLog(@"%@", err)}
+#else
+#   define DLog(...)
+#   define ELog(err)
+#endif
+
+/* 真机或模拟器 */
+#if TARGET_IPHONE_SIMULATOR
+//
+#elif TARGET_OS_IPHONE
+//
+#endif
+
+/// 代码执行时间
+#define TICK   NSDate *startTime = [NSDate date];
+#define TOCK   NSLog(@"Time: %f", -[startTime timeIntervalSinceNow]);
+
+
+//设置View的tag属性
+#define VIEWWITHTAG(_OBJECT, _TAG)    [_OBJECT viewWithTag : _TAG]
+//程序的本地化,引用国际化的文件
+#define MyLocal(x, ...) NSLocalizedString(x, nil)
+
+//G－C－D
+#define BACK(block) dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), block)
+#define MAIN(block) dispatch_async(dispatch_get_main_queue(),block)
+
+#endif</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>20888CE5-13E0-4B11-9BE3-4EEEB93DB277</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>Macro Utils</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>OC-Macro Utils</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string></string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>StringOrComment</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>//创建一个NumberFormatter对象
+        let numberFormatter = NumberFormatter()
+        
+        // 设置精度
+        numberFormatter.roundingMode = .down
+        
+        //numberFormatter.numberStyle = .none //四舍五入的整数
+        
+        //设置 分割形式
+        numberFormatter.usesGroupingSeparator = true //设置用组分隔
+        numberFormatter.groupingSeparator = "," //分隔符号
+        numberFormatter.groupingSize = 3 //分隔位数
+        /// 设置最大整数位数、最小整数位数
+        numberFormatter.formatWidth = 10 //补齐10位
+        numberFormatter.paddingCharacter = "0" //不足位数用0补
+        numberFormatter.paddingPosition = .beforePrefix  //补在前面
+        /// 最大整小位数、最小小数位数
+        numberFormatter.maximumFractionDigits = 2 //设置小数点后最多2位
+        numberFormatter.minimumFractionDigits = 0 //设置小数点后最少2位（不足补0）
+        
+        numberFormatter.positivePrefix = "$" //自定义前缀
+        numberFormatter.positiveSuffix = "元" //自定义后缀
+        
+        //numberFormatter.positiveFormat = "###,###.##" //设置格式
+        
+        //格式化
+        let format = numberFormatter.string(from: number)!</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>366CC3E8-D0ED-4655-A990-A463BB54E564</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>Swift numberFormat</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

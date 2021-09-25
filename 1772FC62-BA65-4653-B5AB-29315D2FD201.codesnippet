@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string></string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>ClassImplementation</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string> @discardableResult
+    func showAlertPopup(title: String?, message: String?, buttonTitles: [String]? = nil, highlightedButtonIndex: Int? = nil, completion: ((Int) -&gt; Void)? = nil) -&gt; UIAlertController {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        var allButtons = buttonTitles ?? [String]()
+        if allButtons.count == 0 {
+            allButtons.append("OK")
+        }
+        
+        for index in 0..&lt;allButtons.count {
+            let buttonTitle = allButtons[index]
+            let action = UIAlertAction(title: buttonTitle, style: .default, handler: { (_) in
+                completion?(index)
+            })
+//            let attributedString = NSMutableAttributedString(string: buttonTitle, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 14), NSAttributedString.Key.foregroundColor : UIColor(hexString: "#545558")])
+            action.setValue(UIColor(hexString: "#545558"), forKey: "titleTextColor")
+            alertController.addAction(action)
+            // Check which button to highlight
+            if let highlightedButtonIndex = highlightedButtonIndex, index == highlightedButtonIndex {
+                alertController.preferredAction = action
+                action.setValue(UIColor(hexString: "#78A8FE"), forKey: "titleTextColor")
+            }
+        }
+        present(alertController, animated: true, completion: nil)
+        return alertController
+    }</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>1772FC62-BA65-4653-B5AB-29315D2FD201</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>Swift 自定义alert</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

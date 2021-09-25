@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string></string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>CodeBlock</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>- (UIImage*)captureView:(WKWebView *)webView
+{
+    UIImage* image = nil;
+    //优化图片截取不清晰
+    UIGraphicsBeginImageContextWithOptions(webView.scrollView.contentSize, true, [UIScreen mainScreen].scale);
+    {
+        CGPoint savedContentOffset = webView.scrollView.contentOffset;
+        CGRect savedFrame = webView.scrollView.frame;
+        webView.scrollView.contentOffset = CGPointZero;
+        webView.scrollView.frame = CGRectMake(0, 0, webView.scrollView.contentSize.width, webView.scrollView.contentSize.height);
+        for (UIView * subView in webView.subviews) {
+            [subView drawViewHierarchyInRect:subView.bounds afterScreenUpdates:YES];
+        }
+        image = UIGraphicsGetImageFromCurrentImageContext();
+        webView.scrollView.contentOffset = savedContentOffset;
+        webView.scrollView.frame = savedFrame;
+    }
+    UIGraphicsEndImageContext();
+    if (image != nil) {
+        return image;
+    }
+    return nil;
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>0174A769-55D9-4F72-A137-4C9A8A73B693</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetPlatformFamily</key>
+	<string>iphoneos</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>OC webView 截图</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

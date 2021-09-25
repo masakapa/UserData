@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string></string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>ClassImplementation</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>func jsonToList(url: URL?) throws -&gt; [JLOptionModel]{
+    guard let url = url else { return [] }
+    guard let data = try? Data(contentsOf: url) else { return [] }
+    guard let jsonData = try? JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as? Dictionary&lt;String, Any&gt;, let list = jsonData["data"] as? [Any] else {
+        return []
+    }
+    guard let models = [JLOptionModel].deserialize(from: list) as? [JLOptionModel] else {
+        return []
+    }
+    let isTh = Localizable.shared.currentLanguage == .th
+    return models.map { model in
+        if isTh, let name = model.thaiName {
+            model.name = name
+        }
+        return model
+    }
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>D702B699-75A4-4A39-9003-62647AE46F30</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>Swift json 文件读取</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

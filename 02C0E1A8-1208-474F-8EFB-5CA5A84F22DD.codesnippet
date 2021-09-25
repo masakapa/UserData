@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string></string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>CodeBlock</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>func imageFromView(aSize:CGSize, aView:UIView) -&gt; UIImage{
+        UIGraphicsBeginImageContextWithOptions(aSize, false, 1)  //创建设备上下文，第一个参数代表大小，第二个参数代表背景是否透明，第三个参数指定生成图片的缩放因子
+        let context = UIGraphicsGetCurrentContext()
+        CGContextSaveGState(context) //将当前图形状态推入堆栈
+        for item in aView.subviews {
+            CGContextTranslateCTM(context, item.frame.origin.x, item.frame.origin.y)//获取图像,缺点:layer是从(0,0)点加入context,必须注意这点
+            item.layer.renderInContext(context)//移动图形上下文的位置，让图层画到相应的位置
+            CGContextTranslateCTM(context, -item.frame.origin.x, -item.frame.origin.y)//把图形上下文移动回原来的位置
+        }
+        
+        CGContextRestoreGState(context) //将堆栈中的图形状态取出来
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return image
+    }</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>02C0E1A8-1208-474F-8EFB-5CA5A84F22DD</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>Swift View 转Image</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

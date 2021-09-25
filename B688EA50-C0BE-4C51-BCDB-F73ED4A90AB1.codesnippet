@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string></string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>CodeBlock</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>- (UIImage*)captureView
+{
+    UIGraphicsBeginImageContext(self.bounds.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    UIImage *img;
+    if([[[UIDevice currentDevice] systemVersion] floatValue]&gt;=7.0)
+    {
+        for(UIView *subview in self.subviews)
+        {
+            [subview drawViewHierarchyInRect:subview.bounds afterScreenUpdates:YES];
+        }
+        img = UIGraphicsGetImageFromCurrentImageContext();
+    }
+    else
+    {
+        CGContextSaveGState(context);
+        [self.layer renderInContext:context];
+        img = UIGraphicsGetImageFromCurrentImageContext();
+    }
+    UIGraphicsEndImageContext();
+    CGImageRef ref = CGImageCreateWithImageInRect(img.CGImage, self.bounds);
+    UIImage *CGImg = [UIImage imageWithCGImage:ref];
+    CGImageRelease(ref);
+    return CGImg;
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>B688EA50-C0BE-4C51-BCDB-F73ED4A90AB1</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetPlatformFamily</key>
+	<string>iphoneos</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>OC-普通view截图</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

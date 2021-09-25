@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string></string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>CodeExpression</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>UILabel *placeHolderLabel = [[UILabel alloc] init];
+    placeHolderLabel.text = @"请输入置为无效原因";
+    placeHolderLabel.numberOfLines = 0;
+    placeHolderLabel.textColor = [UIColor lightGrayColor];
+    [placeHolderLabel sizeToFit];
+    placeHolderLabel.font = [UIFont systemFontOfSize:15];
+    [self.remarkTextView addSubview:placeHolderLabel];
+    [self.remarkTextView setValue:placeHolderLabel forKey:@"_placeholderLabel"];</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>20D83C83-DCCF-4B13-AE1F-B55D313DA041</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetPlatformFamily</key>
+	<string>iphoneos</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>placeholder</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>OC UITextView placeHolder</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

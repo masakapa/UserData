@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string></string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>ClassImplementation</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>- (NSDecimalNumberHandler *)decimalHandler {
+    if (!_decimalHandler) {
+        _decimalHandler = [NSDecimalNumberHandler decimalNumberHandlerWithRoundingMode:NSRoundBankers 
+                                                                                 scale:2 
+                                                                      raiseOnExactness:NO 
+                                                                       raiseOnOverflow:NO 
+                                                                      raiseOnUnderflow:NO 
+                                                                   raiseOnDivideByZero:NO];
+    }
+    return _decimalHandler;
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>BC993103-7757-4D42-83AD-6F6C406A08A1</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>OC-NSDecimalNumberHandler</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

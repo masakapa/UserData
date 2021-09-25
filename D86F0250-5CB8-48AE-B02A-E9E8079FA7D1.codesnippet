@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string></string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>ClassImplementation</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>extension NSObject {
+    
+    /*
+     OBJC_ASSOCIATION_ASSIGN,给关联对象指定弱引用,相当于@property(assign)或@property(unsafe_unretained)
+     OBJC_ASSOCIATION_RETAIN_NONATOMIC,给关联对象指定非原子的强引用,相当于@property(nonatomic,strong)或@property(nonatomic,retain)
+     OBJC_ASSOCIATION_COPY_NONATOMIC,给关联对象指定非原子的copy特性,相当于@property(nonatomic,copy)
+     OBJC_ASSOCIATION_RETAIN,给关联对象指定原子强引用,相当于@property(atomic,strong)或@property(atomic,retain)
+     OBJC_ASSOCIATION_COPY,给关联对象指定原子copy特性,相当于@property(atomic,copy)
+     */
+    
+    func setAssociated&lt;T&gt;(value: T, associatedKey: UnsafeRawPointer, policy: objc_AssociationPolicy = objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC) {
+        objc_setAssociatedObject(self, associatedKey, value, policy)
+    }
+    
+    func getAssociated&lt;T&gt;(associatedKey: UnsafeRawPointer) -&gt; T? {
+        return objc_getAssociatedObject(self, associatedKey) as? T
+    }
+    
+}
+
+extension UIView {
+    private struct AssociatedKeys {
+        static var displayNameKey = "displayNameKey"
+    }
+    
+    var displayName: String? {
+        get {
+            return getAssociated(associatedKey: &amp;AssociatedKeys.displayNameKey)
+        }
+        set {
+            setAssociated(value: newValue, associatedKey: &amp;AssociatedKeys.displayNameKey)
+        }
+    }
+}  </string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>D86F0250-5CB8-48AE-B02A-E9E8079FA7D1</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>Swift objc_Associated</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

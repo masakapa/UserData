@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>CodeBlock</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>// MARK: - 版本比较
+extension String {
+    func ck_compare(with version: String) -&gt; ComparisonResult {
+        return compare(version, options: .numeric, range: nil, locale: nil)
+    }
+    
+    func isNewer(than aVersionString: String) -&gt; Bool {
+        return ck_compare(with: aVersionString) == .orderedDescending
+    }
+    
+    func isOlder(than aVersionString: String) -&gt; Bool {
+        return ck_compare(with: aVersionString) == .orderedAscending
+    }
+    
+    func isSame(to aVersionString: String) -&gt; Bool {
+        return ck_compare(with: aVersionString) == .orderedSame
+    }
+    
+    /// 用于判断当前系统版本是否低于指定版本
+    func systemVersion(below aVersionString: String) -&gt; Bool
+    {
+        return UIDevice.current.systemVersion.isOlder(than: aVersionString)
+    }
+    
+    /// 用于判断当前系统版本是否高于指定版本
+    func systemVersion(over aVersionString: String) -&gt; Bool
+    {
+        return UIDevice.current.systemVersion.isNewer(than: aVersionString)
+    }
+    
+    /// 用于判断当前系统版本是否等于指定版本
+    func systemVersion(sameAs aVersionString: String) -&gt; Bool
+    {
+        return UIDevice.current.systemVersion.isSame(to: aVersionString)
+    }
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>ED8EA27E-F998-4562-8513-18F47BC14320</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetPlatformFamily</key>
+	<string>iphoneos</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>Swift 版本比较</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

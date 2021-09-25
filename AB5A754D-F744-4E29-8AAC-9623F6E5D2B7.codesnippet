@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>refreshEvent</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>let elements = BehaviorRelay&lt;[&lt;#item#&gt;]&gt;(value: [])
+            input.headerRefresh.flatMapLatest({ [weak self] () -&gt; Observable&lt;[&lt;#item#&gt;]&gt; in
+                guard let self = self else { return Observable.just([]) }
+                //self.page = 1
+                return self.&lt;#requestxxx#&gt;(page: 1).trackActivity(self.headerLoading)
+            }).subscribe(onNext: {[weak self] (items) in
+                self?.page = 1
+                elements.accept(items)
+            }).disposed(by: rx.disposeBag)
+            
+            input.footerRefresh.flatMapLatest({ [weak self] () -&gt; Observable&lt;[&lt;#item#&gt;]&gt; in
+                guard let self = self else { return Observable.just([]) }
+                return self.&lt;#requestxxx#&gt;(page: self.page + 1).trackActivity(self.footerLoading)
+            }).subscribe(onNext: {[weak self] (items) in
+                if !items.isEmpty {
+                    self?.page += 1
+                }
+                elements.accept(elements.value + items)
+            }).disposed(by: rx.disposeBag)</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>AB5A754D-F744-4E29-8AAC-9623F6E5D2B7</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>Swift refreshVM</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

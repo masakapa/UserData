@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string></string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>CodeExpression</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>let queue = DispatchQueue(label: "info")
+        let sema = DispatchSemaphore(value: 0)
+        
+        var loginInfo: JLLoginModel?
+
+        queue.async {
+            JLNetworkingProvider.dispatch(JLLoginApi.login(phone: phone, password: password), originClass: JLLoginResponse.self) { (response, _) in
+                if response?.code == ResponseCode.successCode.rawValue {
+                    loginInfo = response?.data
+                    sema.signal()
+                } else {
+                    sema.signal()
+                }
+            } failureHandler: { (_) in
+                sema.signal()
+            }
+            sema.wait()
+        }
+        
+        queue.async {
+            guard let logInfo = loginInfo else {
+                return
+            }
+            JLNetworkingProvider.dispatch(JLLoginApi.userDetai(token: logInfo.token, customerId: logInfo.customerId), originClass: JLUserResponse.self) { (response, _) in
+                if response?.code == ResponseCode.successCode.rawValue {
+                    JLUserManager.shared.loginModel = loginInfo!
+                    JLUserManager.shared.isLogin = true
+                    JLUserManager.shared.user = response?.data
+                    sema.signal()
+                    self.dismiss(animated: true, completion: nil)
+                } else {
+                    sema.signal()
+                }
+            } failureHandler: { (_) in
+                sema.signal()
+            }
+            sema.wait()
+        }
+        
+        queue.async {
+            guard JLUserManager.shared.isLogin else  {
+                return
+            }
+            JLNetworkingProvider.dispatch(JLLoginApi.loginDeviceInfo(para: JLDeviceInfoPara()), originClass: BaseResponse.self)
+        }</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>8888DAE8-FE61-4A0D-9CD6-586D068F6DA5</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>Swift 顺序执行异步请求</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

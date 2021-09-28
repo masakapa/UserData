@@ -43,14 +43,15 @@
     // MARK: - 相册
     
     func photoAuthorizeCheck(completeClosure: AuthorizeCompletClosure?) {
-        if PHPhotoLibrary.authorizationStatus() == .denied {
+        let authStatus = PHPhotoLibrary.authorizationStatus()
+        if authStatus == .restricted || authStatus == .denied {
             // 已被拒绝，没有相册权限，将无法保存拍的照片
 //                        self.showAlertSheet(title: "无法访问相册", message: "请在iPhone的\"设置-隐私-相册\"中允许访问相册", buttonTitles: ["取消", "设置"], highlightedButtonIndex: 10) { index in
 //                            if index == 1 {
 //                                UIApplication.shared.openURL(URL(string: UIApplication.openSettingsURLString)!)
 //                            }
 //                        }
-        } else if PHPhotoLibrary.authorizationStatus() == .notDetermined {
+        } else if authStatus == .notDetermined {
             // 未请求过相册权限
             PHPhotoLibrary.requestAuthorization { (authorizationStatus) in
                 self.photoAuthorizeCheck(completeClosure: completeClosure)

@@ -3,24 +3,26 @@
 <plist version="1.0">
 <dict>
 	<key>IDECodeSnippetCompletionPrefix</key>
-	<string>imn</string>
+	<string></string>
 	<key>IDECodeSnippetCompletionScopes</key>
 	<array>
 		<string>Preprocessor</string>
-		<string>TopLevel</string>
 	</array>
 	<key>IDECodeSnippetContents</key>
-	<string>#import "&lt;#file#&gt;.h"</string>
+	<string>///NSLog在release状态不执行
+#ifdef __OPTIMIZE__
+# define NSLog(...) {}
+#else
+# define NSLog(...) NSLog(__VA_ARGS__)
+#endif</string>
 	<key>IDECodeSnippetIdentifier</key>
-	<string>C2D80FCE-BC66-4C12-97B3-59EB9748AFB4</string>
+	<string>3FA23712-966D-4117-87B5-1C75B26094A5</string>
 	<key>IDECodeSnippetLanguage</key>
 	<string>Xcode.SourceCodeLanguage.Objective-C</string>
-	<key>IDECodeSnippetPlatformFamily</key>
-	<string>iphoneos</string>
 	<key>IDECodeSnippetSummary</key>
 	<string></string>
 	<key>IDECodeSnippetTitle</key>
-	<string>OC-import""</string>
+	<string>OC NSLog Release 不打印</string>
 	<key>IDECodeSnippetUserSnippet</key>
 	<true/>
 	<key>IDECodeSnippetVersion</key>

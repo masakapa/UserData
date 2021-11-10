@@ -3,24 +3,23 @@
 <plist version="1.0">
 <dict>
 	<key>IDECodeSnippetCompletionPrefix</key>
-	<string>imn</string>
+	<string>muc</string>
 	<key>IDECodeSnippetCompletionScopes</key>
 	<array>
-		<string>Preprocessor</string>
-		<string>TopLevel</string>
+		<string>CodeExpression</string>
 	</array>
 	<key>IDECodeSnippetContents</key>
-	<string>#import "&lt;#file#&gt;.h"</string>
+	<string>[&lt;#view#&gt; mas_updateConstraints:^(MASConstraintMaker *make) {
+            &lt;#make#&gt;
+        }];</string>
 	<key>IDECodeSnippetIdentifier</key>
-	<string>C2D80FCE-BC66-4C12-97B3-59EB9748AFB4</string>
+	<string>5FC16281-8D7A-41EF-9249-61B5C549000C</string>
 	<key>IDECodeSnippetLanguage</key>
 	<string>Xcode.SourceCodeLanguage.Objective-C</string>
-	<key>IDECodeSnippetPlatformFamily</key>
-	<string>iphoneos</string>
 	<key>IDECodeSnippetSummary</key>
 	<string></string>
 	<key>IDECodeSnippetTitle</key>
-	<string>OC-import""</string>
+	<string>OC 更新约束</string>
 	<key>IDECodeSnippetUserSnippet</key>
 	<true/>
 	<key>IDECodeSnippetVersion</key>

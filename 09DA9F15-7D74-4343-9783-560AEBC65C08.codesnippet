@@ -3,24 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>IDECodeSnippetCompletionPrefix</key>
-	<string>imn</string>
+	<string>conval</string>
 	<key>IDECodeSnippetCompletionScopes</key>
 	<array>
-		<string>Preprocessor</string>
 		<string>TopLevel</string>
 	</array>
 	<key>IDECodeSnippetContents</key>
-	<string>#import "&lt;#file#&gt;.h"</string>
+	<string>&lt;#NSString *#&gt; const &lt;#name#&gt; = &lt;#@"value"#&gt;;</string>
 	<key>IDECodeSnippetIdentifier</key>
-	<string>C2D80FCE-BC66-4C12-97B3-59EB9748AFB4</string>
+	<string>09DA9F15-7D74-4343-9783-560AEBC65C08</string>
 	<key>IDECodeSnippetLanguage</key>
 	<string>Xcode.SourceCodeLanguage.Objective-C</string>
-	<key>IDECodeSnippetPlatformFamily</key>
-	<string>iphoneos</string>
 	<key>IDECodeSnippetSummary</key>
 	<string></string>
 	<key>IDECodeSnippetTitle</key>
-	<string>OC-import""</string>
+	<string>OC Const String</string>
 	<key>IDECodeSnippetUserSnippet</key>
 	<true/>
 	<key>IDECodeSnippetVersion</key>

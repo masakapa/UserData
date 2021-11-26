@@ -3,15 +3,15 @@
 <plist version="1.0">
 <dict>
 	<key>IDECodeSnippetCompletionPrefix</key>
-	<string>nslocal</string>
+	<string>local</string>
 	<key>IDECodeSnippetCompletionScopes</key>
 	<array>
 		<string>CodeExpression</string>
 	</array>
 	<key>IDECodeSnippetContents</key>
-	<string>NSLocalizedString(@"&lt;#value#&gt;", nil)</string>
+	<string>LocalizedWithKey(@"&lt;#String#&gt;")</string>
 	<key>IDECodeSnippetIdentifier</key>
-	<string>61F84028-EBB8-4911-896D-A07526ACC500</string>
+	<string>084FE55C-E276-46F2-8443-4BE30F8E9550</string>
 	<key>IDECodeSnippetLanguage</key>
 	<string>Xcode.SourceCodeLanguage.Objective-C</string>
 	<key>IDECodeSnippetSummary</key>
@@ -21,6 +21,6 @@
 	<key>IDECodeSnippetUserSnippet</key>
 	<true/>
 	<key>IDECodeSnippetVersion</key>
-	<integer>2</integer>
+	<integer>0</integer>
 </dict>
 </plist>

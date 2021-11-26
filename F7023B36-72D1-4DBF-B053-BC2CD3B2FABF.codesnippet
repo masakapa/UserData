@@ -3,14 +3,14 @@
 <plist version="1.0">
 <dict>
 	<key>IDECodeSnippetCompletionPrefix</key>
-	<string>cop</string>
+	<string>proc</string>
 	<key>IDECodeSnippetCompletionScopes</key>
 	<array>
 		<string>All</string>
 	</array>
 	<key>IDECodeSnippetContents</key>
 	<string>/// &lt;#设置属性#&gt;
-@property (copy  , nonatomic) &lt;#type#&gt; *&lt;#name#&gt;;</string>
+@property (copy  , nonatomic&lt;#, nullable#&gt;) &lt;#type#&gt; *&lt;#name#&gt;;</string>
 	<key>IDECodeSnippetIdentifier</key>
 	<string>F7023B36-72D1-4DBF-B053-BC2CD3B2FABF</string>
 	<key>IDECodeSnippetLanguage</key>
@@ -20,7 +20,7 @@
 	<key>IDECodeSnippetSummary</key>
 	<string></string>
 	<key>IDECodeSnippetTitle</key>
-	<string>OC-copy 属性</string>
+	<string>OC copy 属性</string>
 	<key>IDECodeSnippetUserSnippet</key>
 	<true/>
 	<key>IDECodeSnippetVersion</key>

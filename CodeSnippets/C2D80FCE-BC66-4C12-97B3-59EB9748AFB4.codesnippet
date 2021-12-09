@@ -8,6 +8,8 @@
 	<array>
 		<string>Preprocessor</string>
 		<string>TopLevel</string>
+		<string>ClassImplementation</string>
+		<string>CodeExpression</string>
 	</array>
 	<key>IDECodeSnippetContents</key>
 	<string>#import "&lt;#file#&gt;.h"</string>

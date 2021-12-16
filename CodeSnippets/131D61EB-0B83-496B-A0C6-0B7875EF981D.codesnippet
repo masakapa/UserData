@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>lzcol</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>CodeExpression</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+layout.minimumLineSpacing = &lt;#10#&gt;;
+layout.minimumInteritemSpacing = &lt;#10#&gt;;
+layout.scrollDirection = UICollectionViewScrollDirectionVertical;
+layout.itemSize = CGSizeMake(&lt;#CGFloat width#&gt;, &lt;#CGFloat height#&gt;);
+layout.estimatedItemSize = CGSizeMake(&lt;#CGFloat width#&gt;, &lt;#CGFloat height#&gt;);
+layout.sectionInset = UIEdgeInsetsMake(&lt;#CGFloat top#&gt;, &lt;#CGFloat left#&gt;, &lt;#CGFloat bottom#&gt;, &lt;#CGFloat right#&gt;);
+UICollectionView *collection = [[UICollectionView alloc] initWithFrame:&lt;#frame#&gt; collectionViewLayout:layout];
+collection.backgroundColor = &lt;#UIColor#&gt;;
+collection.delegate = self;
+collection.dataSource = self;
+collection.showsVerticalScrollIndicator = NO;
+collection.showsHorizontalScrollIndicator = NO;</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>131D61EB-0B83-496B-A0C6-0B7875EF981D</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetPlatformFamily</key>
+	<string>iphoneos</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>OC CollectionView 初始化</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

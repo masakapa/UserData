@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string></string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>ClassImplementation</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(saveAction)];
+    
+    [self.wkWebview.configuration.userContentController addScriptMessageHandler:self name:@"myInterface"];
+}
+
+
+- (void)saveAction {
+    NSString *js = [NSString stringWithFormat:@"var xhr = new XMLHttpRequest();\
+    xhr.open('GET', '%@', true);\
+    xhr.responseType = 'arraybuffer';\
+    xhr.onload = function(e) {\
+        if (this.status == 200) {\
+            var uInt8Array = new Uint8Array(this.response);\
+            var i = uInt8Array.length;\
+            var binaryString = new Array(i);\
+            while (i--){\
+                binaryString[i] = String.fromCharCode(uInt8Array[i]);\
+            }\
+            var data = binaryString.join('');\
+            var base64 = window.btoa(data);\
+            window.webkit.messageHandlers.myInterface.postMessage(base64);\
+        }\
+    };\
+    xhr.send();", self.wkWebview.URL.absoluteString];
+    
+    [self.wkWebview evaluateJavaScript:js completionHandler:^(id _Nullable value, NSError * _Nullable error) {
+        DLog(@"%@", value);
+        DLog(@"%@", error);
+    }];
+    
+}
+
+#pragma mark - WKScriptMessageHandler js调用oc -- 监听h5事件
+- (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message {
+    NSURL *documentsURL = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+    NSData *convertedData = [[NSData alloc] initWithBase64EncodedString:message.body options:0];
+    DLog(@"%@", documentsURL);
+    //name your file however you prefer
+    NSURL *fileUrl = [documentsURL URLByAppendingPathComponent:@"sample.pdf"];
+    DLog(@"%@", fileUrl);
+    @try {
+        [convertedData writeToURL:fileUrl atomically:YES];
+    } @catch (NSException *exception) {
+        DLog(@"%@", exception);
+    } @finally {
+        
+    }
+    
+    UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:@[fileUrl] applicationActivities:nil];
+    [self presentViewController:activityViewController animated:YES completion:nil];
+}
+    </string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>4108E866-2F4F-4C77-978F-7F1A9FC2DEF5</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetPlatformFamily</key>
+	<string>iphoneos</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>通用 保存pdf文件基本思路</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>0</integer>
+</dict>
+</plist>

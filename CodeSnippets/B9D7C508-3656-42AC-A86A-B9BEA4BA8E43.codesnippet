@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string></string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>CodeExpression</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string> NSString *js = [NSString stringWithFormat:@"var xhr = new XMLHttpRequest();\
+    xhr.open('GET', '%@', true);\
+    xhr.responseType = 'arraybuffer';\
+    xhr.onload = function(e) {\
+        if (this.status == 200) {\
+            var uInt8Array = new Uint8Array(this.response);\
+            var i = uInt8Array.length;\
+            var binaryString = new Array(i);\
+            while (i--){\
+                binaryString[i] = String.fromCharCode(uInt8Array[i]);\
+            }\
+            var data = binaryString.join('');\
+            var base64 = window.btoa(data);\
+            window.webkit.messageHandlers.myInterface.postMessage(base64);\
+        }\
+    };\
+    xhr.send();", self.wkWebview.URL.absoluteString];
+    
+    [self.wkWebview evaluateJavaScript:js completionHandler:^(id _Nullable value, NSError * _Nullable error) {
+        DLog(@"%@", value);
+        DLog(@"%@", error);
+    }];</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>B9D7C508-3656-42AC-A86A-B9BEA4BA8E43</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetPlatformFamily</key>
+	<string>iphoneos</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>通用 webview保存pdf文件js</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>0</integer>
+</dict>
+</plist>

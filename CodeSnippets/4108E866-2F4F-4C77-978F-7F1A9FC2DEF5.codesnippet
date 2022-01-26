@@ -63,6 +63,11 @@
     
     UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:@[fileUrl] applicationActivities:nil];
     [self presentViewController:activityViewController animated:YES completion:nil];
+//    文件处理
+//    UIDocumentInteractionController *controller = [UIDocumentInteractionController interactionControllerWithURL:fileUrl];
+//    controller.delegate = self;
+//    [controller presentPreviewAnimated:YES];
+//    [controller presentOpenInMenuFromRect:self.view.bounds inView:self.view animated:YES];
 }
     </string>
 	<key>IDECodeSnippetIdentifier</key>
@@ -78,6 +83,6 @@
 	<key>IDECodeSnippetUserSnippet</key>
 	<true/>
 	<key>IDECodeSnippetVersion</key>
-	<integer>0</integer>
+	<integer>2</integer>
 </dict>
 </plist>

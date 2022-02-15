@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string></string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>CodeExpression</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>UITableView *table = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height/2) style:UITableViewStylePlain];
+        table.dataSource = self;
+        table.delegate = self;
+        table.showsVerticalScrollIndicator = YES;
+        table.rowHeight = UITableViewAutomaticDimension;
+        table.estimatedRowHeight = UITableViewAutomaticDimension;
+        table.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+        table.backgroundColor = UIColor.whiteColor;
+        table.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        table.separatorInset = UIEdgeInsetsZero;
+        table.separatorColor = [UIColor colorWithWhite:0.9 alpha:1];
+        table.tableFooterView = [UIView new];</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>16E46D80-EAC7-4DFF-8B05-E4B967F2C767</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetPlatformFamily</key>
+	<string>iphoneos</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>OC tableView 初始化</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>0</integer>
+</dict>
+</plist>

@@ -24,6 +24,17 @@
         //        UIAlertView * alart = [[UIAlertView alloc]initWithTitle:@"温馨提示" message:@"请您设置允许APP访问您的相册\n设置&gt;隐私&gt;照片" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
         //        [alart show];
         //        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+        [UIAlertController showAlertCntrollerWithViewController:self
+                                           alertControllerStyle:UIAlertControllerStyleAlert
+                                                          title:@"温馨提示"
+                                                        message:@"请您设置允许APP访问您的相册\n设置&gt;隐私&gt;照片" CallBackBlock:^(NSInteger btnIndex) {
+            if (btnIndex == 1) {
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString] options:@{} completionHandler:nil];
+            }
+        }
+                                              cancelButtonTitle:@"取消"
+                                         destructiveButtonTitle:@"去设置"
+                                              otherButtonTitles:nil, nil]
     } else {
         !complete ?: complete();
     }
@@ -45,11 +56,29 @@
         }];
     } else if (status == AVAuthorizationStatusRestricted || status == AVAuthorizationStatusDenied) {
         // 无权限
-        //        Alert(@"请在iPhone的“设置-隐私-相机”选项中，允许微信访问您的相机。", nil);
-        //        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+        [UIAlertController showAlertCntrollerWithViewController:self
+                                           alertControllerStyle:UIAlertControllerStyleAlert
+                                                          title:@"温馨提示"
+                                                        message:@"请在iPhone的“设置-隐私-相机”选项中，允许App访问您的相机。" CallBackBlock:^(NSInteger btnIndex) {
+            if (btnIndex == 1) {
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString] options:@{} completionHandler:nil];
+            }
+        }
+                                              cancelButtonTitle:@"取消"
+                                         destructiveButtonTitle:@"去设置"
+                                              otherButtonTitles:nil, nil]
     } else {
         if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-            //            Alert(@"相机不可用", nil);
+            {
+                [UIAlertController showAlertCntrollerWithViewController:self
+                                                   alertControllerStyle:UIAlertControllerStyleAlert
+                                                                  title:nil
+                                                                message:@"相机不可用" CallBackBlock:nil
+                                                      cancelButtonTitle:@"取消"
+                                                 destructiveButtonTitle:nil
+                                                      otherButtonTitles:nil, nil];
+                return;
+            }
             return;
         }
         !complete ?: complete();

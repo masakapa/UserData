@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string></string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>- (NSInteger)serchHisCount {
+    if (self.historyArray.count == 0) {
+        return 0;
+    }
+    NSUInteger cellCount = 0; // 最终返回的记录条数
+    int maxRow = 3; // 最大显示行数
+    int currentRow = 1; // 已经计算到的行数
+    CGFloat totalStrWidth = 0; // 总字符串宽度
+    CGFloat maxCellWidth = MAIN_SCREEN_WIDTH - 30; // 最大显示宽度
+    for (int i = 0; i &lt; self.historyArray.count; i++) {
+        NSString *keyword = self.historyArray[i];
+        NSString *nextKeyword;
+        if (i+1 &lt; self.historyArray.count) {
+             nextKeyword = self.historyArray[i+1];
+        }
+        cellCount = i+1;
+        CGFloat wordWidth = [self stringWidth:keyword];
+        CGFloat nextWidth = [self stringWidth:nextKeyword ?: @""] + 15;
+        totalStrWidth += wordWidth + (totalStrWidth &gt; 0 ? 1 : 0) * 15;
+        if (wordWidth &gt; maxCellWidth) {
+            currentRow += 1;
+            totalStrWidth = 0;
+        } else if (totalStrWidth + nextWidth &gt; maxCellWidth) {
+            currentRow += 1;
+            totalStrWidth = 0;
+        }
+                
+        if (currentRow &gt; maxRow) {
+            break;
+        }
+    }
+    return cellCount;
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>D332B349-C938-4850-AD69-D50E3067E15C</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>OC 计算tag行数</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

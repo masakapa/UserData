@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string></string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>CodeExpression</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>- (void)didReceiveKeyboardShowNotification:(NSNotification *)noti {
+    NSDictionary *userInfo = noti.userInfo;
+    NSTimeInterval animationDuration;
+    UIViewAnimationCurve animationCurve;
+    CGRect keyboardFrame;
+    [[userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey] getValue:&amp;animationCurve];
+    [[userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] getValue:&amp;animationDuration];
+    [[userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] getValue:&amp;keyboardFrame];
+    
+    UIViewAnimationOptions animationOptions = animationCurve &lt;&lt; 16;
+    
+    self.bottomConstrains.offset = -CGRectGetHeight(keyboardFrame);
+    [UIView animateWithDuration:animationDuration delay:0. options:animationOptions animations:^{
+        [self.view setNeedsUpdateConstraints];
+        [self.view layoutIfNeeded];
+    } completion:^(BOOL finished) {
+        
+    }];
+}
+
+- (void)didReceiveKeyboardHideNotification:(NSNotification *)noti {
+    NSDictionary *userInfo = noti.userInfo;
+    NSTimeInterval animationDuration;
+    UIViewAnimationCurve animationCurve;
+    CGRect keyboardFrame;
+    [[userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey] getValue:&amp;animationCurve];
+    [[userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] getValue:&amp;animationDuration];
+    [[userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] getValue:&amp;keyboardFrame];
+    UIViewAnimationOptions animationOptions = animationCurve &lt;&lt; 16;
+    self.bottomConstrains.offset = 0;
+    [UIView animateWithDuration:animationDuration delay:0. options:animationOptions animations:^{
+        [self.view setNeedsUpdateConstraints];
+        [self.view layoutIfNeeded];
+    } completion:^(BOOL finished) {
+        
+    }];
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>76BC7A99-2B75-4257-B06F-4041C19819C5</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetPlatformFamily</key>
+	<string>iphoneos</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>OC 键盘动画一致</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

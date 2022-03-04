@@ -22,7 +22,8 @@ collection.delegate = self;
 collection.dataSource = self;
 collection.showsVerticalScrollIndicator = NO;
 collection.showsHorizontalScrollIndicator = NO;
-collection.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;</string>
+collection.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+collection.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;</string>
 	<key>IDECodeSnippetIdentifier</key>
 	<string>131D61EB-0B83-496B-A0C6-0B7875EF981D</string>
 	<key>IDECodeSnippetLanguage</key>

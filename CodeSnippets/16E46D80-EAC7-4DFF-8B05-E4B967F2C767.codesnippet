@@ -17,6 +17,7 @@
         table.estimatedRowHeight = UITableViewAutomaticDimension;
         table.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
         table.backgroundColor = UIColor.whiteColor;
+        table.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
         table.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
         table.separatorInset = UIEdgeInsetsZero;
         table.separatorColor = [UIColor colorWithWhite:0.9 alpha:1];

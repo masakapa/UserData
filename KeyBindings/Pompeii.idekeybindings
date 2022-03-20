@@ -676,26 +676,6 @@
 			</dict>
 			<dict>
 				<key>Action</key>
-				<string>_toggleShowAssistantMode:</string>
-				<key>Alternate</key>
-				<string>NO</string>
-				<key>CommandID</key>
-				<string>Xcode.IDEKit.CmdDefinition.ShowAssistantEditor</string>
-				<key>Group</key>
-				<string>Xcode.Skywagon.MenuDefinition.Editor Menu for Xcode.IDEKit.EditorDocument.Skywagon.BuildReport.Title</string>
-				<key>GroupID</key>
-				<string>Xcode.Skywagon.DocumentEditorMenu</string>
-				<key>GroupedAlternate</key>
-				<string>NO</string>
-				<key>Keyboard Shortcut</key>
-				<string>~</string>
-				<key>Navigation</key>
-				<string>NO</string>
-				<key>Title</key>
-				<string>Assistant</string>
-			</dict>
-			<dict>
-				<key>Action</key>
 				<string>showInFinder:</string>
 				<key>Alternate</key>
 				<string>NO</string>

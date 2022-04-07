@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string></string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>CodeExpression</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    
+    // 实现自定义手势替换边缘返回手势
+    // 获取系统自带滑动手势的target对象
+    id target = self.interactivePopGestureRecognizer.delegate;
+    // 创建全屏滑动手势，调用系统自带滑动手势的target的action方法
+    SEL handler = NSSelectorFromString(@"handleNavigationTransition:");
+    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:target action:handler];
+    pan.name = @"pop";
+    pan.delegate = self;
+    [self.interactivePopGestureRecognizer.view addGestureRecognizer:pan];
+    self.interactivePopGestureRecognizer.enabled = NO;
+    
+    // 只支持边缘返回只设置下面这一行
+    self.interactivePopGestureRecognizer.delegate = self;
+}
+
+#pragma mark - UIGestureRecognizerDelegate
+
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
+    if (gestureRecognizer == self.interactivePopGestureRecognizer || [gestureRecognizer.name isEqualToString:@"pop"]) {
+        if (self.viewControllers.count &lt; 2 ||
+            self.visibleViewController == [self.viewControllers objectAtIndex:0]) {
+            return NO;
+        }
+        // 右滑手势设置 当控制器正在返回的时候，不响应
+        if ([[self.navigationController valueForKey:@"_isTransitioning"] boolValue]) {
+            return NO;
+        }
+        // 右滑手势设置 只能响应 从左到右的滑动
+        if ([gestureRecognizer isMemberOfClass:UIPanGestureRecognizer.class]) {
+            CGPoint translation = [(UIPanGestureRecognizer *)gestureRecognizer translationInView:gestureRecognizer.view];
+            if (translation.x &lt;= 0) {
+                return NO;
+            }
+        }
+        if ([self.visibleViewController respondsToSelector:@selector(allowInteractivePop)]) {
+            return [self.visibleViewController performSelector:@selector(allowInteractivePop)];
+        }
+    }
+    return YES;
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>CF682D1D-FECB-461C-911D-A9D8B02ECBCA</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetPlatformFamily</key>
+	<string>iphoneos</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>OC 侧滑返回手势</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

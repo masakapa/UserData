@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string></string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>CodeExpression</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string> GMMUploadCoverService *service = [GMMUploadCoverService new];
+    // TODO: 支持上传文件
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [self.view showBgHUDHoldOn];
+    [manager POST:[NSString stringWithFormat:@"%@%@", service.baseURL, service.path] parameters:nil headers:service.headerFields constructingBodyWithBlock:^(id&lt;AFMultipartFormData&gt;  _Nonnull formData) {
+        [formData appendPartWithFileData:data name:@"file" fileName:@"headimg.jpeg" mimeType:@"image/jpeg"];
+    } progress:nil  success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        DLog(@"%@", responseObject);
+        [self.view dismissHUD];
+        if (responseObject &amp;&amp; [responseObject isKindOfClass:[NSDictionary class]]) {
+            if ([[responseObject valueForKey:@"code"] intValue] == 200) {
+                [self.view showHUD:@"上传成功"];
+                NSDictionary *dataDic = [responseObject valueForKey:@"data"];
+                self.coverUrl = dataDic[@"intact"];
+            } else {
+                [self.view showHUD:[responseObject valueForKey:@"msg"]];
+            }
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"upload error = %@", error);
+        [self.view dismissHUD];
+        [self.view showHUD:[NSString stringWithFormat:@"%@", error.localizedDescription]];
+    }];</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>231C756B-4771-4545-9B5D-5AB783D4D779</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>OC AFNetwoking 上传文件</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

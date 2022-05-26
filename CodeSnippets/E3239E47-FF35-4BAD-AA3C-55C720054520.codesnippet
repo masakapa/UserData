@@ -3,30 +3,28 @@
 <plist version="1.0">
 <dict>
 	<key>IDECodeSnippetCompletionPrefix</key>
-	<string>imn</string>
+	<string>imnh</string>
 	<key>IDECodeSnippetCompletionScopes</key>
 	<array>
-		<string>ClassInterfaceVariables</string>
-		<string>ClassInterfaceMethods</string>
-		<string>ClassImplementation</string>
-		<string>TopLevel</string>
-		<string>StringOrComment</string>
-		<string>CodeBlock</string>
-		<string>Preprocessor</string>
 		<string>CodeExpression</string>
+		<string>ClassImplementation</string>
+		<string>ClassInterfaceVariables</string>
+		<string>Preprocessor</string>
+		<string>TopLevel</string>
+		<string>ClassInterfaceMethods</string>
+		<string>CodeBlock</string>
+		<string>StringOrComment</string>
 	</array>
 	<key>IDECodeSnippetContents</key>
-	<string>#import "&lt;#file#&gt;</string>
+	<string>#import "&lt;#file#&gt;.h"</string>
 	<key>IDECodeSnippetIdentifier</key>
-	<string>C2D80FCE-BC66-4C12-97B3-59EB9748AFB4</string>
+	<string>E3239E47-FF35-4BAD-AA3C-55C720054520</string>
 	<key>IDECodeSnippetLanguage</key>
 	<string>Xcode.SourceCodeLanguage.Objective-C</string>
-	<key>IDECodeSnippetPlatformFamily</key>
-	<string>iphoneos</string>
 	<key>IDECodeSnippetSummary</key>
 	<string></string>
 	<key>IDECodeSnippetTitle</key>
-	<string>OC-import"</string>
+	<string>OC import""</string>
 	<key>IDECodeSnippetUserSnippet</key>
 	<true/>
 	<key>IDECodeSnippetVersion</key>

@@ -10,11 +10,11 @@
 	</array>
 	<key>IDECodeSnippetContents</key>
 	<string>if (page == 1) {
-    [self.tableView finishPullUpRefresh];
-    [self.shopList removeAllObjects];            
+    [self.tableView finishPullDownRefresh];
+    [self.dataList removeAllObjects];            
 }
 self.page = page;
-[self.shopList addObjectsFromArray:responseBody.data];
+[self.dataList addObjectsFromArray:responseBody.data];
 if (responseBody.data.count == 0) {
     [self.tableView setHasMoreData:NO];
 } else {
@@ -30,7 +30,7 @@ if (responseBody.data.count == 0) {
 	<key>IDECodeSnippetSummary</key>
 	<string></string>
 	<key>IDECodeSnippetTitle</key>
-	<string>OC 列表请求成功数据处理</string>
+	<string>OC 分页请求成功数据处理</string>
 	<key>IDECodeSnippetUserSnippet</key>
 	<true/>
 	<key>IDECodeSnippetVersion</key>

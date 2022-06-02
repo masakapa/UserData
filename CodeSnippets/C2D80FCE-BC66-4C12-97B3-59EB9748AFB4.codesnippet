@@ -6,14 +6,14 @@
 	<string>imn</string>
 	<key>IDECodeSnippetCompletionScopes</key>
 	<array>
-		<string>ClassInterfaceVariables</string>
-		<string>ClassInterfaceMethods</string>
 		<string>ClassImplementation</string>
-		<string>TopLevel</string>
-		<string>StringOrComment</string>
-		<string>CodeBlock</string>
-		<string>Preprocessor</string>
 		<string>CodeExpression</string>
+		<string>ClassInterfaceVariables</string>
+		<string>Preprocessor</string>
+		<string>TopLevel</string>
+		<string>ClassInterfaceMethods</string>
+		<string>CodeBlock</string>
+		<string>StringOrComment</string>
 	</array>
 	<key>IDECodeSnippetContents</key>
 	<string>#import "&lt;#file#&gt;</string>
